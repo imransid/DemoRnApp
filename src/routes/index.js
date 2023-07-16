@@ -10,7 +10,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 // import ConfirmCode from '../screen/ConfirmCode';
 // import SignUpStep1 from '../screen/register/Step1';
 // import Profile from '../screen/Profile';
-import Home from '../screens/Home';
+// import Home from '../screens/Home';
 // import Logout from '../screen/Logout';
 // import DataSave from '../screen/DataSave';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

@@ -1,9 +1,10 @@
 import {takeEvery} from 'redux-saga/effects';
-import {SIGNUP_REQUEST} from '../constants/ActionTypes';
-import {_signUp} from './Auth.saga';
+import {ADD_BOOKMARK} from '../constants/ActionTypes';
+
+import {_addBookMark} from './BookMark.saga';
 
 const rootSaga = function* () {
-  yield takeEvery(SIGNUP_REQUEST, _signUp);
+  yield takeEvery(ADD_BOOKMARK, _addBookMark);
 };
 
 export default rootSaga;

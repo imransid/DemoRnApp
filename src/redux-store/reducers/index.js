@@ -1,9 +1,8 @@
-import { combineReducers } from "redux";
+import {combineReducers} from 'redux';
+import BookMark from './BookMark';
 
-import AuthReducer from "./AuthReducer/AuthReducer";
-
-const RootReducer = combineReducers({
-  auth: AuthReducer,
+const rootReducer = combineReducers({
+  bookmark: BookMark,
 });
 
-export default RootReducer;
+export default rootReducer;

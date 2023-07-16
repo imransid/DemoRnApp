@@ -4,33 +4,14 @@ import {sizes, spacing, colors} from '../../utils/Styles';
 import {ScaledSheet} from 'react-native-size-matters';
 import {Text} from 'react-native-paper';
 
+import {useSelector} from 'react-redux';
+
 const CARD_WIDTH = sizes.width - 100;
-const CARD_HEIGHT = 200;
+const CARD_HEIGHT = 100;
 const CARD_WIDTH_SPACING = CARD_WIDTH - spacing.l;
 
-// change image uri to source ={} for locally image
-
 const TopPlaceCarousel = () => {
-  const list = [
-    {
-      title: 'name 1',
-      id: 1,
-      image:
-        'https://www.trolleytours.com/wp-content/uploads/2016/07/trolley-tours-of-key-west.jpg',
-    },
-    {
-      title: 'name 2',
-      id: 2,
-      image:
-        'https://assets.thehansindia.com/h-upload/2019/12/27/248830-worldtour.jpg',
-    },
-    {
-      title: 'name 3',
-      id: 3,
-      image:
-        'https://itsholidaysltd.com/wp-content/uploads/2022/04/Eid-Tour-Packages-From-Bangladesh-1.jpg',
-    },
-  ];
+  const bookMarkList = useSelector(e => e.bookmark.bookmarkList);
 
   return (
     <FlatList
@@ -39,27 +20,32 @@ const TopPlaceCarousel = () => {
       decelerationRate={'fast'}
       keyExtractor={i => i.id}
       showsHorizontalScrollIndicator={false}
-      data={list}
+      data={bookMarkList}
       renderItem={({item, index}) => {
         return (
           <TouchableOpacity
             style={{
               marginLeft: spacing.l,
-              marginRight: index === list.length - 1 ? spacing.l : 0,
+              marginRight: index === bookMarkList.length - 1 ? spacing.l : 0,
             }}
             key={item.id}>
+            <Text variant="titleMedium" style={styles.title}>
+              {item?.categoryName}
+            </Text>
             <View style={styles.card}>
               <View style={styles.imageBox}>
-                <Image
-                  source={{
-                    uri: item.image,
-                  }}
-                  style={styles.image}
-                />
-              </View>
-              <View style={styles.textBox}>
                 <Text variant="titleMedium" style={styles.title}>
-                  {item?.title}
+                  <Text variant="titleMedium" style={styles.titleH}>
+                    {'Title'}
+                  </Text>{' '}
+                  : {item?.title}
+                </Text>
+
+                <Text variant="titleMedium" style={styles.title}>
+                  <Text variant="titleMedium" style={styles.titleH}>
+                    {'Url'}
+                  </Text>{' '}
+                  : {item?.urlLink}
                 </Text>
               </View>
             </View>
@@ -74,6 +60,10 @@ const styles = ScaledSheet.create({
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
+    borderColor: colors.lightGray,
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
   },
   image: {
     width: CARD_WIDTH,
@@ -92,8 +82,15 @@ const styles = ScaledSheet.create({
     left: 16,
   },
   title: {
+    // fontWeight: 'bold',
+    color: colors.primary,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+
+  titleH: {
     fontWeight: 'bold',
-    color: colors.white,
+    color: colors.black,
   },
 });
 
